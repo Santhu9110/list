@@ -30,12 +30,12 @@ public class EmployeeController {
 
     @PutMapping("/employees/{employeeId}")
     public Employee updateEmployee(@PathVariable("employeeId") int employeeId, @RequestBody Employee employee) {
-        return employeesService.updateStudent(employeeId, employee);
+        return employeeService.updateEmployee(employeeId, employee);
     }
 
-    @DeleteMapping("/students/{studentId}")
-    public void deleteStudent(@PathVariable int studentId) {
-        studentH2Service.deleteStudent(studentId);
+    @DeleteMapping("/employees/{employeeId}")
+    public void deleteEmployee(@PathVariable int employeeId) {
+        employeeService.deleteEmployee(employeeId);
     }
 
 }
