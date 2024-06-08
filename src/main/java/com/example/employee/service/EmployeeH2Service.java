@@ -31,7 +31,7 @@ public class EmployeeH2Service implements EmployeeRepository {
         try {
             return db.queryForObject("select * from EMPLOYEELIST where employeeId = ?", new EmployeeRowMapper(),
                     employeeId);
-            return employee;
+            return employees;
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -39,7 +39,7 @@ public class EmployeeH2Service implements EmployeeRepository {
 
     @Override
     public Employee addEmployee(Employee employee) {
-        db.update("insert into EMPLOYEELIST(employeeName,email,department) values (?,?)", employee.getEmployeeName(),
+        db.update("insert into EMPLOYEELIST(employeeName,email,department) values (?,?,?)", employee.getEmployeeName(),
                 employee.getEmail(), employee.getDepartment());
         Employee savedEmployee = db.queryForObject(
                 "select * from EMPLOYEELIST where employeeName = ? and email = ? and department = ?",
